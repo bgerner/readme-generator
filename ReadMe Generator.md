@@ -2,7 +2,7 @@
   # ReadMe Generator
   
 
-  ![License](https://img.shields.io/badge/License-GPL-3.0-green.svg)
+  ![License](https://img.shields.io/badge/GPL-3.0-red.svg)
 
     
   ## Description 
