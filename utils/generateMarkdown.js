@@ -49,7 +49,7 @@ function renderLicenseSection(data) {
   };
 
   if (data.lic!=='no license') {
-    licenseLink = '(https://choosealicense.com/licenses/${lowerCaseLic}/)'
+    licenseLink = '(https://choosealicense.com/licenses/' + lowerCaseLic + '/)'
   };
 
   if (data.lic==='no license') {
