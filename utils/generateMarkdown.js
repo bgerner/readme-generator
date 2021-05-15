@@ -1,63 +1,88 @@
-const lowerCaseLic = data.lic.toLowerCase();
+// function renderLicenseBadge(data) {
+//   if (data.lic='no license')  {
+//     let licenseBadge = '';
+//   }
+//   else { 
+//     let licenseBadge = '![License](https://img.shields.io/badge/License-${data.lic}-green.svg)'
+//   }
+// };
 
-function renderLicenseBadge(lic) {
-  if (data.lic='no license')  {
-    let licenseBadge = '';
-  }
-  else { 
-    let licenseBadge = '![License](https://img.shields.io/badge/License-${data.lic}-green.svg)'
-  }
-};
+// function renderLicenseLink(data) {
+//   if (data.lic='no license') {
+//     let licenseLink = '';
+//   }
+//   else {
+//     let licenseLink = '(https://choosealicense.com/licenses/${lowerCaseLic}/)'
+//   }
+// };
 
-function renderLicenseLink(lic) {
-  if (data.lic='no license') {
-    let licenseLink = '';
-  }
-  else {
-    let licenseLink = '(https://choosealicense.com/licenses/${lowerCaseLic}/)'
-  }
-};
+// function renderLicenseDescription(data) {
+//   if (data.lic='no license') {
+//     let licenseDescription = '';
+//   }
+//   else if (data.lic='MIT') {
+//     let licenseDescription = `A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
+//   }
+//   else if (data.lic='Apache-2.0') {
+//     let licenseDescription = `A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
+//   }
+//   else if (data.lic='GPL-3.0') {
+//     let licenseDescription = `Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.`
+//   }
+// };
 
-function renderLicenseDescription(lic) {
-  if (data.lic='no license') {
-    let licenseDescription = '';
-  }
-  else if (data.lic='MIT') {
-    let licenseDescription = `A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
-  }
-  else if (data.lic='Apache-2.0') {
-    let licenseDescription = `A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
-  }
-  else if (data.lic='GPL-3.0') {
-    let licenseDescription = `Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.`
-  }
-};
+let licenseBadge = '';
+let licenseLink = '';
+let licenseDescription = '';
+let licenseSection = '';
 
+function renderLicenseSection(data) {
 
-function renderLicenseSection(lic) {
-  if (data.lic='no license') {
-    let license = ''
+  const lowerCaseLic = data.lic.toLowerCase();
+
+  if (data.lic!=='no license')  {
+    licenseBadge = `
+
+  ![License](https://img.shields.io/badge/License-${data.lic}-green.svg)
+
+    `
+  };
+
+  if (data.lic!=='no license') {
+    licenseLink = '(https://choosealicense.com/licenses/${lowerCaseLic}/)'
+  };
+
+  if (data.lic==='no license') {
+    licenseDescription = '';
   }
-  else {
-    let license = `
+  else if (data.lic==='MIT') {
+    licenseDescription = `A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
+  }
+  else if (data.lic==='Apache-2.0') {
+    licenseDescription = `A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.`
+  }
+  else if (data.lic==='GPL-3.0') {
+    licenseDescription = `Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.`
+  };
 
-    ## License
+  if (data.lic!=='no license') {
+    licenseSection = `
 
-    ### [${data.lic} License]${licenseLink}
+  ## License
 
-    ${licenseDescription}
+  ### [${data.lic} License]${licenseLink}
+
+  ${licenseDescription}
     
     `
-  }
-}
+  };
+};
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  
   return `
   # ${data.title}
-
   ${licenseBadge}
-
   ## Description 
 
   ${data.description}
@@ -79,7 +104,7 @@ function generateMarkdown(data) {
   ## Usage
 
   ${data.usage}
-  ${license}
+  ${licenseSection}
   ## Contributing
 
   ${data.contributing}
@@ -97,4 +122,7 @@ function generateMarkdown(data) {
 `;
 }
 
-module.exports = generateMarkdown;
+module.exports = {
+  generateMarkdown: generateMarkdown,
+  renderLicenseSection: renderLicenseSection
+}

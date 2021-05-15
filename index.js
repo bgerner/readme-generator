@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown')
+const { generateMarkdown } = require('./utils/generateMarkdown');
+const { renderLicenseSection } = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -74,6 +74,7 @@ function init() {
             if (!fileName.endsWith('.md')) {
                 fileName += '.md'
             }
+            renderLicenseSection(data);
             writeToFile(fileName, data);
         })
 
