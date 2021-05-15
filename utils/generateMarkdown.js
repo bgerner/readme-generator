@@ -43,7 +43,7 @@ function renderLicenseSection(data) {
   if (data.lic!=='no license')  {
     licenseBadge = `
 
-  ![License](https://img.shields.io/badge/${data.lic}-green.svg)
+  ![License](https://img.shields.io/badge/${data.lic}-red.svg)
 
     `
   };
