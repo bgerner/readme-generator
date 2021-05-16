@@ -49,6 +49,6 @@
   Also feel free to shoot me an email @brgerner@gmail.com
   
   
-  Walkthrough Video:
+  ## Walkthrough Video:
   
   https://drive.google.com/file/d/1KPRcLGtnWzJ71PTwjZOeKQCNFy5lErUi/view?usp=sharing
