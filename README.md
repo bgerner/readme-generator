@@ -47,3 +47,8 @@
   Please click [here](https://github.com/bgerner/) to be redirected to my GitHub profile page.
 
   Also feel free to shoot me an email @brgerner@gmail.com
+  
+  
+  Walkthrough Video:
+  
+  https://drive.google.com/file/d/1KPRcLGtnWzJ71PTwjZOeKQCNFy5lErUi/view?usp=sharing
